@@ -1,0 +1,14 @@
+{
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3307,
+    "username": "admin",
+    "password": "c31b4",
+    "database": "prueba",
+    "entities": ["dist/**/*.entidad{.ts,.js}"],
+    "migrationsTableName": "migration_history",
+    "migrations": ["dist/infraestructura/migraciones/*.js"],
+    "cli": {
+      "migrationsDir": "src/infraestructura/migraciones"
+    }
+  }
