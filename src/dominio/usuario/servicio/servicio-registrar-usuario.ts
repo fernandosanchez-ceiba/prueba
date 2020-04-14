@@ -1,6 +1,7 @@
-import { RepositorioUsuario } from '../puerto/repositorio/repositorio-usuario';
-import { Usuario } from '../modelo/usuario';
 import { Injectable } from '@nestjs/common';
+import { Usuario } from '../modelo/usuario';
+
+import { RepositorioUsuario } from '../puerto/repositorio/repositorio-usuario';
 import { ErrorDeNegocio } from 'src/dominio/excepciones/error-de-negocio';
 
 @Injectable()

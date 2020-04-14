@@ -1,6 +1,6 @@
 import { ErrorLongitudInvalida } from 'src/dominio/excepciones/error-longitud-invalida';
 
-const NUMERO_MINIMO_CARACTERES_CLAVE = 4;
+const NUMERO_MINIMO_CARACTERES_CLAVE = 5; 
 
 export class Usuario {
   private _nombre: string;
@@ -16,8 +16,8 @@ export class Usuario {
 
   private validarTamanoClave(clave: string) {
     if (clave.length < NUMERO_MINIMO_CARACTERES_CLAVE) {
-      throw new ErrorLongitudInvalida(
-        `El tamaño mínimo de la clave debe ser ${NUMERO_MINIMO_CARACTERES_CLAVE}`,
+      throw new ErrorLongitudInvalida( 
+        `El tamaño de la clave debe ser superior a ${NUMERO_MINIMO_CARACTERES_CLAVE}`,
       );
     }
   }
@@ -34,3 +34,4 @@ export class Usuario {
     return this._fechaCreacion;
   }
 }
+

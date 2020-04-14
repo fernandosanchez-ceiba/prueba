@@ -1,10 +1,11 @@
+// crear tabla usuario en BD
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity({ name: 'usuario' })
 export class UsuarioEntidad {
   @PrimaryGeneratedColumn()
   id: number;
-
+    
   @Column()
   nombre: string;
 
@@ -14,3 +15,6 @@ export class UsuarioEntidad {
   @Column()
   fechaCreacion: Date;
 }
+
+
+
