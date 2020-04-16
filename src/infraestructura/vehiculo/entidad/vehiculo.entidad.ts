@@ -21,16 +21,4 @@ export class VehiculoEntidad {
   estado: string;
 }
 
-@Entity({ name: 'transacciones' })
 
-export class TransaccionesEntidad {
-  
-  @PrimaryGeneratedColumn()
-  idTransacciones: number;
-    
-  @Column()
-  fkIdVehiculos: number;
-
-  @Column()
-  fkIdtarifas: number;  
-}

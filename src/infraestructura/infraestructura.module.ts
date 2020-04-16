@@ -9,6 +9,8 @@ import { TransaccionesModule } from './transacciones/transacciones.module';
 
 import { TarifasModule } from './tarifas/tarifas.module';
 
+
+
 @Module({
   providers: [Logger],
   imports: [TypeOrmModule.forRoot(), UsuarioModule, VehiculoModule, TransaccionesModule, TarifasModule],

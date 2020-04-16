@@ -15,7 +15,10 @@ import { RepositorioSalidaMysql } from "src/infraestructura/vehiculo/adaptador/r
 import { ManejadorRegistrarSalida } from "src/aplicacion/vehiculo/comando/manejador-registrar-salida";
 import { ServicioRegistrarSalida } from "src/dominio/vehiculo/servicio/servicio-registrar-salida";
 
-//import { TransaccionesEntidad } from "src/infraestructura/transacciones/entidad/transacciones.entidad"; 
+//pruebas transacciones
+import { TransaccionesModule } from 'src/infraestructura/transacciones/transacciones.module'
+import {ServicioRegistrarTransaccion} from 'src/dominio/transacciones/servicio/servicio-registrar-transaccion'
+
 const repositorioIngresoProvider = {
   provide: RepositorioIngreso,
   useClass: RepositorioIngresoMysql
@@ -25,10 +28,22 @@ const repositorioSalidaProvider ={
   useClass: RepositorioSalidaMysql
 }
 
+//
+import { RepositorioTransacciones } from 'src/dominio/transacciones/puerto/repositorio/repositorio-transacciones';
+import { RepositorioTransaccionesMysql } from 'src/infraestructura/transacciones/adaptador/repositorio/repositorio-transacciones-mysql';
+import { TransaccionesEntidad } from 'src/infraestructura/transacciones/entidad/transacciones.entidad'
+
+const repositorioTransaccionesProvider = {
+  provide: RepositorioTransacciones,
+  useClass: RepositorioTransaccionesMysql
+}
+
 @Module({ 
-  imports: [TypeOrmModule.forFeature([VehiculoEntidad])], //esquema  
+  imports: [TypeOrmModule.forFeature([VehiculoEntidad]), TypeOrmModule.forFeature([TransaccionesEntidad])], //esquemas de bd  
            
   providers: [  //servicios
+    ServicioRegistrarTransaccion,
+    repositorioTransaccionesProvider, 
     repositorioIngresoProvider,
     repositorioSalidaProvider,
     ManejadorRegistrarIngreso,

@@ -5,10 +5,7 @@ import { RepositorioSalida } from 'src/dominio/vehiculo/puerto/repositorio/repos
 import { VehiculoEntidad } from '../../entidad/vehiculo.entidad';
 import { Vehiculo } from 'src/dominio/vehiculo/modelo/vehiculo'; 
 
-
-
 import { VehiculoDTO } from "src/dominio/vehiculo/modelo/vehiculo.dto";
-
 import { TarifasDTO } from 'src/dominio/tarifas/modelo/tarifas.dto'
 
 export class RepositorioSalidaMysql implements RepositorioSalida {
@@ -31,26 +28,14 @@ export class RepositorioSalidaMysql implements RepositorioSalida {
                     where "${minutos}" between minutoInferior and minutoSuperior `) 
         }
 
-        async registrarSalida( vehiculo: Vehiculo, codigoTarifa:number, codigoVehiculo: number ) {
-            console.log("datos a guardar en base de datos salida :")
-            console.log(vehiculo);
-            console.log(codigoTarifa);
-            console.log(codigoVehiculo);       
-          /*    
-            const entidadTransaccion = new TransaccionesEntidad();
-             
-            entidadTransaccion.fkIdtarifas= codigoTarifa;
-            entidadTransaccion.fkIdVehiculos= codigoVehiculo;
-            await this.repositorioTransacciones.save(entidadTransaccion); 
-       
-          /*
-            const entidad = new VehiculoEntidad();
-            entidad.placa = vehiculo.placa;
-            entidad.fechaIngreso=vehiculo.fechaIngreso;
-            entidad.estado= vehiculo.estado;
-
-            await this.repositorio.save(entidad);                          
-            console.log(codigoTarifa)
-        */
+        async registrarSalida( vehiculo: Vehiculo, idVehiculo: number ) {
+            console.log("datos a guardar en base de datos 'vehiculo' :");            
+            console.log(vehiculo); 
+            return await this.repositorio.query(
+              `UPDATE vehiculos 
+                SET fechaSalida = '${vehiculo.fechaSalida}', estado =  '${vehiculo.estado}' 
+                WHERE  idVehiculos = '${idVehiculo}'
+              `
+            )
        }
 }
