@@ -47,7 +47,7 @@ export class ServicioRegistrarSalida {
                         Number(tiempoParqueoMinutos[0]),
                         "SALIO"
                     );
-                    console.log("enviando a servicio vehiculo");
+                    
                     
                     await this._repositoSalida.registrarSalida(vehiculo, datosVehiculo[0].idVehiculos ); 
                     const transaccion= new TransaccionesDTO;  

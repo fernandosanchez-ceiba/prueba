@@ -29,8 +29,7 @@ export class RepositorioSalidaMysql implements RepositorioSalida {
         }
 
         async registrarSalida( vehiculo: Vehiculo, idVehiculo: number ) {
-            console.log("datos a guardar en base de datos 'vehiculo' :");            
-            console.log(vehiculo); 
+             
             return await this.repositorio.query(
               `UPDATE vehiculos 
                 SET fechaSalida = '${vehiculo.fechaSalida}', estado =  '${vehiculo.estado}' 

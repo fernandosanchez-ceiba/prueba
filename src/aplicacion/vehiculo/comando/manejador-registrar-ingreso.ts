@@ -20,7 +20,7 @@ export class ManejadorRegistrarIngreso {
                 comandoRegistrarIngreso.fechaIngreso = fechaIngreso,
                 comandoRegistrarIngreso.fechaSalida,
                 comandoRegistrarIngreso.tiempoParqueado,
-                comandoRegistrarIngreso.estado,                
+                comandoRegistrarIngreso.estado="PARQUEADO",                
             ),
         )
     }
