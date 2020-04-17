@@ -9,7 +9,7 @@ export class Vehiculo {
     private _fechaIngreso: string;
     private _fechaSalida: string;
     private _tiempoParqueado: number;
-    private _estado: string;  //ingreso salio 
+    private _estado: string;  //ingreso salio  
 
     constructor(placa: string, fechaIngreso: string, fechaSalida: string, tiempoParqueado: number, estado: string ){
         this.validarPlaca(placa) ; 
