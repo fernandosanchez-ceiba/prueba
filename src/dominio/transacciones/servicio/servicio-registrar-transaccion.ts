@@ -18,11 +18,8 @@ export class ServicioRegistrarTransaccion {
     this._repositorioTransacciones = repositorioTransacciones;
   }
 
-  async ejecutar(transacciones : TransaccionesDTO) {
-    console.log("hola desde servicio transaccion, datos recibidos:  ");
+  async ejecutar(transacciones : TransaccionesDTO) {    
     await this._repositorioTransacciones.registrarTransaccion( transacciones); 
   }
-  async saludar(){
-      console.log("hola desde servicio transaccion ")
-  }
+  
 }

@@ -6,10 +6,11 @@ import { ServicioRegistrarSalida  } from 'src/dominio/vehiculo/servicio/servicio
 
 @Injectable()
 export class ManejadorRegistrarSalida { 
-    constructor (private _servicioRegistrarSalida: ServicioRegistrarSalida ){}
+    constructor (private _servicioRegistrarSalida: ServicioRegistrarSalida ){} 
     
     async registrarSalida(comandoRegistrarSalida: ComandoRegistrarSalida){
-        await this._servicioRegistrarSalida.salidaVehiculo(comandoRegistrarSalida.placa)
+                
+        await this._servicioRegistrarSalida.salidaVehiculo(comandoRegistrarSalida.placa)             
     }
 }
 

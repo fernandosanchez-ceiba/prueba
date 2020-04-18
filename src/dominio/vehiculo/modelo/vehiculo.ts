@@ -2,7 +2,7 @@
 
 import { ErrorLongitudInvalida } from 'src/dominio/excepciones/error-longitud-invalida';  //
 
-const NUMERO_MINIMO_CARACTERES_PLACA = 6; 
+const NUMERO_MINIMO_CARACTERES_PLACA = 6;   
 
 export class Vehiculo {
     private _placa: string;    

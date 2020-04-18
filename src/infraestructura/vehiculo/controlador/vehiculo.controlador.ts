@@ -8,7 +8,7 @@ import { ManejadorRegistrarSalida  } from 'src/aplicacion/vehiculo/comando/manej
 @Controller('vehiculos')  
 export class VehiculoControlador {
     constructor(
-        private readonly _manejadorRegistrarIngreso: ManejadorRegistrarIngreso,
+        private readonly _manejadorRegistrarIngreso: ManejadorRegistrarIngreso,  //singleton   
         private readonly _manejadorRegistrarSalida: ManejadorRegistrarSalida
     ){}
 

@@ -1,3 +1,10 @@
 export class TarifasDTO {
-    idTarifas : number;    
+    idtarifas: number;
+    minutoInferior: number;
+    minutoSuperior: number;
+    valor: number;    
 }
+
+
+
+

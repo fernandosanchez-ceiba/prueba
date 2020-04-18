@@ -29,8 +29,8 @@ export class ServicioRegistrarSalida {
     }
 
     async salidaVehiculo( placa: string ){   
+         
         const datosVehiculo = await this._repositoSalida.IdentificadorEstadoVehiculo(placa);
-        
         if(datosVehiculo.length>0){        
             if (datosVehiculo[0].estado=="PARQUEADO"){
                 formatoFechaIngreso= moment(datosVehiculo[0].fechaIngreso).format('YYYY-MM-DD HH:mm:ss');            
@@ -46,26 +46,26 @@ export class ServicioRegistrarSalida {
                         fechaSalida,
                         Number(tiempoParqueoMinutos[0]),
                         "SALIO"
-                    );
+                    );                   
                     
+                    await this._repositoSalida.registrarSalida(vehiculo, datosVehiculo[0].idVehiculos );
                     
-                    await this._repositoSalida.registrarSalida(vehiculo, datosVehiculo[0].idVehiculos ); 
+                    const sabado= moment(fechaSalida).day();
+                    if(sabado==6){
+                        tarifa[0].idtarifas=0;                         
+                    }                    
                     const transaccion= new TransaccionesDTO;  
                     transaccion.fkIdVehiculos =  datosVehiculo[0].idVehiculos,
-                    transaccion.fkIdtarifas =  tarifa[0].idTarifas
+                    transaccion.fkIdtarifas =  tarifa[0].idtarifas
                     console.log("enviando a servicio tarifas: ") 
-                    await this._servicioRegistrarTransaccion.ejecutar(transaccion);
-                    
+                    await this._servicioRegistrarTransaccion.ejecutar(transaccion);                  
 
                 }else{
-                    throw new ErrorDeNegocio(
-                        `No hay tarifa configurada`,                                
-                    );
+                    throw new ErrorDeNegocio(`No hay tarifa configurada`);
                 }                       
             }
         } else{
                 throw new ErrorDeNegocio(`Vehiculo no parqueado`);      
-              }    
+              }        
     }
 }
-
