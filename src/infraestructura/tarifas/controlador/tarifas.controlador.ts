@@ -3,7 +3,9 @@
 import { Controller, Post, Body, Put, Delete, Param } from '@nestjs/common';   // importo lo que voy a usar de http con nest, tambien puedo usar Param, HttpCode para especificar el codigo http, entre otras cosas
 import { ComandoCrearTarifas } from 'src/aplicacion/tarifas/comando/comando-crear-tarifa';
 import { ManejadorCrearTarifas } from 'src/aplicacion/tarifas/comando/manejador-crear-tarifas';
-import { ManejadorListarTarifas } from 'src/aplicacion/tarifas/consulta/manejador-listar-tarifas'
+import { ManejadorListarTarifas } from 'src/aplicacion/tarifas/consulta/manejador-listar-tarifas';
+import { ManejadorBorrarTarifas } from 'src/aplicacion/tarifas/comando/manejador-borrar-tarifas';
+import { ManejadorActualizarTarifas } from 'src/aplicacion/tarifas/comando/manejador-actualizar-tarifas';
 import { TarifasDTO } from 'src/dominio/tarifas/modelo/tarifas.dto'
 
 @Controller('tarifas')  
@@ -11,8 +13,8 @@ export class TarifasControlador {
     constructor(
         private readonly _manejadorCrearTarifas: ManejadorCrearTarifas,
         private readonly _manejadorListarTarifas: ManejadorListarTarifas,        
-        //private readonly _manejadorBorrarTarifas: ManejadorBorrarTarifas,
-        //private readonly _manejadorActualizarTarifas: ManejadorActualizarTarifas        
+        private readonly _manejadorBorrarTarifas: ManejadorBorrarTarifas,
+        private readonly _manejadorActualizarTarifas: ManejadorActualizarTarifas        
     ){}
     
     @Post() 
@@ -25,14 +27,13 @@ export class TarifasControlador {
         return this._manejadorListarTarifas.listaTarifas(); 
     }
     @Delete(':id')
-    actualizarAlgo(@Param('id') id ): string{
+    borrarTarifas(@Param('id') id: string ): Promise<TarifasDTO[]>  {
     console.log(id);    
-    return ("borrando tarifas" + id)
+    return this._manejadorBorrarTarifas.ejecutar(id); 
     }  
 
     @Put()
-    borrarTarifas(@Body() tarifasDTO : TarifasDTO ): Promise<TarifasDTO[]> {
-    console.log(tarifasDTO);
-    return tarifasDTO[0]
+    actualizarTarifas(@Body() tarifa : TarifasDTO ): Promise<TarifasDTO[]> {        
+    return this._manejadorActualizarTarifas.actualizar(tarifa);    
     }
 }

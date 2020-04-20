@@ -25,12 +25,21 @@ export class RepositorioTarifasMysql implements RepositorioTarifas {
             await this.repositorio.save(entidadTarifas)
         } 
         
-        async borrarTarifa(tarifa: Tarifas):Promise<TarifasDTO[]>  { 
-           console.log(tarifa);           
+        async borrarTarifa(id: string):Promise<TarifasDTO[]>  {                     
             return await this.entityManager.query(
-                'SELECT u.nombre, u.clave FROM USUARIO u',
-              );
-        } 
-
-
+                `delete 
+                    FROM pruebas.tarifas 
+                    where idtarifas=${id}`,
+            );
+        }
+        
+        async actualizarTarifa(tarifa: TarifasDTO):Promise<TarifasDTO[]>  {                     
+            return await this.entityManager.query(
+                `UPDATE tarifas 
+                SET valor= '${tarifa.valor}', 
+                    minutoInferior='${tarifa.minutoInferior}',
+                    minutoSuperior= '${tarifa.minutoSuperior}'  
+                where (idtarifas='${tarifa.idtarifas}') `,
+            );
+        }
 }

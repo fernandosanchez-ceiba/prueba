@@ -12,7 +12,10 @@ import { ManejadorCrearTarifas} from 'src/aplicacion/tarifas/comando/manejador-c
 import { ManejadorListarTarifas } from 'src/aplicacion/tarifas/consulta/manejador-listar-tarifas'
 import { DaoTarifas } from 'src/dominio/tarifas/puerto/dao/dao-tarifas';
 import { DaoTarifasMysql } from 'src/infraestructura/tarifas/adaptador/dao/dao-tarifas-mysql'
-
+import { ManejadorBorrarTarifas } from 'src/aplicacion/tarifas/comando/manejador-borrar-tarifas';
+import { ServicioBorrarTarifas } from 'src/dominio/tarifas/servicio/servicio-borrar-tarifas';
+import { ManejadorActualizarTarifas } from 'src/aplicacion/tarifas/comando/manejador-actualizar-tarifas';
+import { ServicioActualizarTarifas } from 'src/dominio/tarifas/servicio/servicio-actualizar-tarifas'
 
 const repositorioTarifasProvider = {
   provide: RepositorioTarifas,
@@ -30,7 +33,11 @@ const daoTarifasProvider = {
     ServicioCrearTarifas,
     ManejadorCrearTarifas,
     ManejadorListarTarifas,
-    daoTarifasProvider
+    daoTarifasProvider,
+    ServicioBorrarTarifas,
+    ManejadorBorrarTarifas,
+    ManejadorActualizarTarifas,
+    ServicioActualizarTarifas
   ],
   controllers: [TarifasControlador], 
 })
