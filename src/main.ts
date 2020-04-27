@@ -1,5 +1,6 @@
-import { NestFactory } from '@nestjs/core';  // default de nest  jf
-import { AppModule } from './app.module'; // default de nest  jf
+// SERVIDOR NODE jS
+import { NestFactory } from '@nestjs/core';  
+import { AppModule } from './app.module'; 
 
 import { Logger } from '@nestjs/common';
 
@@ -8,8 +9,12 @@ import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { FiltroExcepcionesDeNegocio } from './infraestructura/excepciones/filtro-excepciones-negocio';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);  // default de nest  jf
+  
+  const app = await NestFactory.create(AppModule);
+  app.enableCors();
+ 
   const logger = app.get(Logger); 
+  
 
   app.useGlobalFilters(new FiltroExcepcionesDeNegocio(logger));
 

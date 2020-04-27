@@ -4,7 +4,3 @@ export class TarifasDTO {
     minutoSuperior: number;
     valor: number;    
 }
-
-
-
-

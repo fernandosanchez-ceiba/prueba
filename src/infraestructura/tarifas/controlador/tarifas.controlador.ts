@@ -1,4 +1,3 @@
-//  Aca es el controlador y recibo las peticiones http.. 
 
 import { Controller, Post, Body, Put, Delete, Param } from '@nestjs/common';   // importo lo que voy a usar de http con nest, tambien puedo usar Param, HttpCode para especificar el codigo http, entre otras cosas
 import { ComandoCrearTarifas } from 'src/aplicacion/tarifas/comando/comando-crear-tarifa';
@@ -23,7 +22,8 @@ export class TarifasControlador {
     }
 
     @Post('/listar')
-      listaTarifas(): Promise<TarifasDTO[]> {        
+      listaTarifas(): Promise<TarifasDTO[]> { 
+                      
         return this._manejadorListarTarifas.listaTarifas(); 
     }
     @Delete(':id')
@@ -33,7 +33,9 @@ export class TarifasControlador {
     }  
 
     @Put()
-    actualizarTarifas(@Body() tarifa : TarifasDTO ): Promise<TarifasDTO[]> {        
+    actualizarTarifas(@Body() tarifa : TarifasDTO ): Promise<TarifasDTO[]> {
+    console.log(tarifa);
+            
     return this._manejadorActualizarTarifas.actualizar(tarifa);    
     }
-}
+} 

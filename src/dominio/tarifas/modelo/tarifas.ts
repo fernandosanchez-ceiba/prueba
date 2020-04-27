@@ -18,15 +18,12 @@ export class Tarifas {
 
     private validarMinutos(minutoInferior: number, minutoSuperior: number ) {
         console.log("validando datos inferior : " +minutoInferior+  " superior : " + minutoSuperior );        
-        if ((minutoSuperior)<(minutoInferior)) {
-            console.log("error++++++++++++++++");
-            
+        if ((minutoSuperior)<(minutoInferior)) {                        
             throw new ErrorLongitudInvalida( 
                 `minuto superior "${minutoSuperior}", es menor o igual que minuto inferior "${minutoInferior}"`,
             );
         }
     }
-
     get idtarifas(): number {
         return this._idtarifas;
     }

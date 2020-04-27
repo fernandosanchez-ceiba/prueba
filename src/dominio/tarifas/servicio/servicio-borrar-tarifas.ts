@@ -14,6 +14,6 @@ export class ServicioBorrarTarifas {
   async borrar(id: string): Promise<TarifasDTO[]>  {    
     return await this._repositorioTarifas.borrarTarifa(id);
   }
-}
+} 
 
  

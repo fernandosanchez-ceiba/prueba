@@ -19,7 +19,12 @@ export class Vehiculo {
         this._tiempoParqueado= tiempoParqueado ;
         this._estado= estado ;
     }
-    private validarPlaca(placa: string) {
+    private validarPlaca(placa: string) {        
+        if(placa===undefined){
+            throw new ErrorLongitudInvalida( 
+                `Placa null`,
+            );
+        }        
         if (placa.length != NUMERO_MINIMO_CARACTERES_PLACA) {
             throw new ErrorLongitudInvalida( 
                 `Placa invalida`,

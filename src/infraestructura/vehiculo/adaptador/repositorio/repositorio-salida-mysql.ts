@@ -23,7 +23,7 @@ export class RepositorioSalidaMysql implements RepositorioSalida {
 
         async tarifaCobro(minutos: string): Promise<TarifasDTO[]> { 
             return await this.repositorio.query(
-                 `SELECT idTarifas 
+                 `SELECT idtarifas, valor 
                     FROM pruebas.tarifas 
                     where "${minutos}" between minutoInferior and minutoSuperior `) 
         }
@@ -32,7 +32,7 @@ export class RepositorioSalidaMysql implements RepositorioSalida {
              
             return await this.repositorio.query(
               `UPDATE vehiculos 
-                SET fechaSalida = '${vehiculo.fechaSalida}', estado =  '${vehiculo.estado}' 
+                SET fechaSalida = '${vehiculo.fechaSalida}', estado =  '${vehiculo.estado}', tiempoParqueado='${vehiculo.tiempoParqueado}' 
                 WHERE  idVehiculos = '${idVehiculo}'
               `
             )

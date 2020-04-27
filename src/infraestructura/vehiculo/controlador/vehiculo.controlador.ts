@@ -4,7 +4,7 @@ import { ComandoRegistrarIngreso } from "src/aplicacion/vehiculo/comando/comando
 import { ManejadorRegistrarIngreso } from "src/aplicacion/vehiculo/comando/manejador-registrar-ingreso";
 import { ComandoRegistrarSalida } from 'src/aplicacion/vehiculo/comando/comando-registrar-salida';
 import { ManejadorRegistrarSalida  } from 'src/aplicacion/vehiculo/comando/manejador-registrar-salida'
- 
+import { TarifasDTO } from 'src/dominio/tarifas/modelo/tarifas.dto';
 @Controller('vehiculos')  
 export class VehiculoControlador {
     constructor(
@@ -13,12 +13,13 @@ export class VehiculoControlador {
     ){}
 
     @Post("ingreso") 
-    async registrarIngreso(@Body() comandoRegistrarIngreso: ComandoRegistrarIngreso  ) {
+    async registrarIngreso(@Body() comandoRegistrarIngreso: ComandoRegistrarIngreso  ) {        
         return await this._manejadorRegistrarIngreso.consultarEstado(comandoRegistrarIngreso); 
     }
 
     @Post("salida")     
-    async registrarSalida(@Body() comandoRegistrarSalida: ComandoRegistrarSalida  ) {
+     async registrarSalida(@Body() comandoRegistrarSalida: ComandoRegistrarSalida  ): Promise<TarifasDTO[]> {
+    
         return await this._manejadorRegistrarSalida.registrarSalida(comandoRegistrarSalida); 
     }
 }

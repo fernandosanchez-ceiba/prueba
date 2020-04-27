@@ -7,14 +7,16 @@ import { Vehiculo } from 'src/dominio/vehiculo/modelo/vehiculo';
 
 import moment = require('moment');
 
-const fechaIngreso = moment().format('YYYY-MM-DD HH:mm:ss');
+
 
 @Injectable()
 export class ManejadorRegistrarIngreso {
     constructor (private _servicioRegistrarIngreso: ServicioRegistrarIngreso ){}
     
     async consultarEstado(comandoRegistrarIngreso: ComandoRegistrarIngreso){
+        const fechaIngreso = moment().format('YYYY-MM-DD HH:mm:ss');
         await this._servicioRegistrarIngreso.IngresarVehiculo(
+
             new Vehiculo(
                 comandoRegistrarIngreso.placa,
                 comandoRegistrarIngreso.fechaIngreso = fechaIngreso,

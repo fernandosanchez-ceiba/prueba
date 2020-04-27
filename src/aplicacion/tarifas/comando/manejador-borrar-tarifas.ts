@@ -9,4 +9,4 @@ export class ManejadorBorrarTarifas {
   async ejecutar(id: string): Promise<TarifasDTO[]> {
     return await this._servicioBorrarTarifas.borrar(id);    
   }
-} 
+}   
