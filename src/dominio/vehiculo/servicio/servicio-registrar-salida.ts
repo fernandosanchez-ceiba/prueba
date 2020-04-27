@@ -57,8 +57,8 @@ export class ServicioRegistrarSalida {
             tarifa[0].idtarifas = 0;
           }
           const transaccion = new TransaccionesDTO();
-          (transaccion.fkIdVehiculos = datosVehiculo[0].idVehiculos),
-            (transaccion.fkIdtarifas = tarifa[0].idtarifas);
+          transaccion.fkIdVehiculos = datosVehiculo[0].idVehiculos
+          transaccion.fkIdtarifas = tarifa[0].idtarifas
           await this._servicioRegistrarTransaccion.ejecutar(transaccion);
           return tarifa;
         } else {

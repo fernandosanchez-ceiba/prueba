@@ -16,7 +16,6 @@ import { ManejadorRegistrarSalida } from "src/aplicacion/vehiculo/comando/maneja
 import { ServicioRegistrarSalida } from "src/dominio/vehiculo/servicio/servicio-registrar-salida";
 
 //pruebas transacciones
-import { TransaccionesModule } from 'src/infraestructura/transacciones/transacciones.module'
 import {ServicioRegistrarTransaccion} from 'src/dominio/transacciones/servicio/servicio-registrar-transaccion'
 
 const repositorioIngresoProvider = {
